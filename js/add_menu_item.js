@@ -1,0 +1,2 @@
+//alert("hello");
+$("#hac-nav-menu .sg-hac-menu-options").append('<div id="hac-Classes" class="sg-hac-menu-option" subdiv="#hac-nav-submenu-Classes-options"><a href="https://accesscenter.roundrockisd.org/HomeAccess/Content/Student/Assignments.aspx"><img alt="Classes" src="https://accesscenter.roundrockisd.org/HomeAccess/Media/images/Menu/hac-Grades.png"><span>Better Grades</span></a></div>');
