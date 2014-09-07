@@ -3,6 +3,7 @@
 	"name": "Westwood Grades Helper",
 	"description": "This extension augments the WW grade system.",
 	"version": "0.0.0.1",
+	"content_security_policy": "script-src 'self' 'unsafe-eval'",
 
 	"content_scripts": [
 		{
@@ -14,7 +15,7 @@
 		{
 			"matches": ["https://accesscenter.roundrockisd.org/HomeAccess/Content/*"],
 			"css": ["css/grades.css"],
-			"js": ["js/lodash.js", "js/jquery.js", "js/sort_dom.js", "js/moment.js", "js/scraping_utils.js", "js/grade_view_tweaks.js"]
+			"js": ["js/lodash.js", "js/jquery.js", "js/react.js", "js/jsx.js", "js/sort_dom.js", "js/moment.js", "js/scraping_utils.js", "js/grade_view_tweaks.js", "js/new_ui.js"]
 		}
 	]
 }
