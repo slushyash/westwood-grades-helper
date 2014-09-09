@@ -90,7 +90,7 @@ function scrapeData() {
 // 	});
 // });
 var data = scrapeData();
-//console.log(data);
+console.log(data);
 
 //gotten from github, removes css styles
 (function() {
@@ -129,7 +129,7 @@ $("body").prepend(new_ui_div);
 // var CourseInfo = React.createClass({
 //   render: function() {
 //     var categories = _.map(this.props.data.categories, function(category) {
-//       return (<CategoryInfo data={category} />);
+//       return (<CategoryInfo key={category.name + category.maximum_points} data={category} />);
 //     });
 //     return (
 //       <div class="course_info">
@@ -142,22 +142,23 @@ $("body").prepend(new_ui_div);
 var CourseInfo = React.createClass({displayName: 'CourseInfo',
   render: function() {
     var categories = _.map(this.props.data.categories, function(category) {
-      return (CategoryInfo({data: category}));
+      return (CategoryInfo({key: category.name + category.maximum_points, data: category}));
     });
     return (
-      React.DOM.div({className: "course_info"},
-        React.DOM.h1(null, this.props.data.name, ": ", this.props.data.grade),
+      React.DOM.div({className: "course_info"}, 
+        React.DOM.h1(null, this.props.data.name, ": ", this.props.data.grade), 
         categories
       )
     );
   }
 });
 
+
 // var CategoryInfo = React.createClass({
 //   render: function() {
 //     var tableRows = _.map(this.props.data.assignments, function(assignment) {
 //       return (
-//       <tr>
+//       <tr key={assignment.assignment_name}>
 //         <td>{assignment.assignment_name}</td>
 //         <td>{assignment.score}/{assignment.total_points}</td>
 //         <td>{assignment.weight}</td>
@@ -198,48 +199,48 @@ var CategoryInfo = React.createClass({displayName: 'CategoryInfo',
   render: function() {
     var tableRows = _.map(this.props.data.assignments, function(assignment) {
       return (
-      React.DOM.tr(null,
-        React.DOM.td(null, assignment.assignment_name),
-        React.DOM.td(null, assignment.score, "/", assignment.total_points),
-        React.DOM.td(null, assignment.weight),
+      React.DOM.tr({key: assignment.assignment_name}, 
+        React.DOM.td(null, assignment.assignment_name), 
+        React.DOM.td(null, assignment.score, "/", assignment.total_points), 
+        React.DOM.td(null, assignment.weight), 
         React.DOM.td(null, assignment.average_score)
       )
       );
     });
     return (
-      React.DOM.div({id: "category"},
-        React.DOM.h2(null, this.props.data.category_name, ": ", this.props.data.weight, " "),
-        React.DOM.table(null,
-          React.DOM.thead(null,
-            React.DOM.tr(null,
-              React.DOM.th(null, "Assignment Name"),
-              React.DOM.th(null, "Score/Total"),
-              React.DOM.th(null, "Weight"),
+      React.DOM.div({id: "category"}, 
+        React.DOM.h2(null, this.props.data.category_name, ": ", this.props.data.weight, " "), 
+        React.DOM.table(null, 
+          React.DOM.thead(null, 
+            React.DOM.tr(null, 
+              React.DOM.th(null, "Assignment Name"), 
+              React.DOM.th(null, "Score/Total"), 
+              React.DOM.th(null, "Weight"), 
               React.DOM.th(null, "Average Score")
             )
-          ),
-          React.DOM.tbody(null,
+          ), 
+          React.DOM.tbody(null, 
             tableRows
-          ),
-          React.DOM.tfoot(null,
-            React.DOM.tr(null,
-              React.DOM.td(null, "Total:"),
-              React.DOM.td(null, this.props.data.percent),
-              React.DOM.td(null),
+          ), 
+          React.DOM.tfoot(null, 
+            React.DOM.tr(null, 
+              React.DOM.td(null, "Total:"), 
+              React.DOM.td(null, this.props.data.percent), 
+              React.DOM.td(null), 
               React.DOM.td(null)
             )
           )
 
         )
       )
-    );
+    )
   }
 });
 
 // var StudentInfo = React.createClass({
 //   render: function() {
 //     var courses = _.map(this.props.data, function(course) {
-//       return (<CourseInfo data={course} />);
+//       return (<CourseInfo key={course.name} data={course} />);
 //     });
 //     return (<div class="course">{courses}</div>);
 //   }
@@ -247,9 +248,9 @@ var CategoryInfo = React.createClass({displayName: 'CategoryInfo',
 var StudentInfo = React.createClass({displayName: 'StudentInfo',
   render: function() {
     var courses = _.map(this.props.data, function(course) {
-      return (CourseInfo({data: course}));
+      return (CourseInfo({key: course.name, data: course}));
     });
-    return (React.DOM.div({className: "courses"}, courses));
+    return (React.DOM.div({className: "course"}, courses));
   }
 });
 // React.renderComponent(

@@ -14,7 +14,7 @@
 		},
 		{
 			"matches": ["https://accesscenter.roundrockisd.org/HomeAccess/Content/*"],
-			"css": ["css/grades.css"],
+			"css": ["css/grades.css", "css/pure.css"],
 			"js": ["js/lodash.js", "js/jquery.js", "js/react.js", "js/jsx.js", "js/sort_dom.js", "js/moment.js", "js/scraping_utils.js", "js/grade_view_tweaks.js", "js/new_ui.js"]
 		}
 	]
